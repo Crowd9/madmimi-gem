@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.madmimi.com/audience_members/search.xml
+    uri: https://api.madmimi.com/audience_members/search.xml
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY&raw=true&query=test

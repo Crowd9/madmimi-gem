@@ -41,7 +41,7 @@ class MadMimi
 
   include HTTParty
 
-  base_uri 'api.madmimi.com'
+  base_uri 'https://api.madmimi.com'
 
   parser(
     Proc.new do |body, format|
@@ -224,9 +224,9 @@ class MadMimi
     options = opt.dup
     options[:body] = yaml_body.to_yaml
     if !options[:list_name].nil? || options[:to_all]
-      do_request(path(options[:to_all] ? :mailer_to_all : :mailer_to_list), :post, options, true)
+      do_request(path(options[:to_all] ? :mailer_to_all : :mailer_to_list), :post, options)
     else
-      do_request(path(:mailer), :post, options, true)
+      do_request(path(:mailer), :post, options)
     end
   end
 
@@ -238,9 +238,9 @@ class MadMimi
         unless html.include?('[[unsubscribe]]') || html.include?('[[opt_out]]')
           raise MadMimiError, "When specifying list_name, include the [[unsubscribe]] or [[opt_out]] macro in your HTML before sending."
         end
-        do_request(path(options[:to_all] ? :mailer_to_all : :mailer_to_list), :post, options, true)
+        do_request(path(options[:to_all] ? :mailer_to_all : :mailer_to_list), :post, options)
       else
-        do_request(path(:mailer), :post, options, true)
+        do_request(path(:mailer), :post, options)
       end
     else
       raise MadMimiError, "You'll need to include either the [[tracking_beacon]] or [[peek_image]] macro in your HTML before sending."
@@ -252,29 +252,27 @@ class MadMimi
     options[:raw_plain_text] = plaintext
     if !options[:list_name].nil? || options[:to_all]
       if plaintext.include?('[[unsubscribe]]') || plaintext.include?('[[opt_out]]')
-        do_request(path(options[:to_all] ? :mailer_to_all : :mailer_to_list), :post, options, true)
+        do_request(path(options[:to_all] ? :mailer_to_all : :mailer_to_list), :post, options)
       else
         raise MadMimiError, "You'll need to include either the [[unsubscribe]] or [[opt_out]] macro in your text before sending."
       end
     else
-      do_request(path(:mailer), :post, options, true)
+      do_request(path(:mailer), :post, options)
     end
   end
 
   def status(transaction_id)
-    do_request(path(:mailer_status, :transaction_id => transaction_id), :get, {}, true)
+    do_request(path(:mailer_status, :transaction_id => transaction_id), :get, {})
   end
 
   private
 
   # Refactor this method asap
-  def do_request(path, method = :get, options = {}, transactional = false)
+  def do_request(path, method = :get, options = {})
     options = default_options.deep_merge({
       :format => options.delete(:format) || extract_format(path),
       :body => options
     })
-
-    path = convert_to_secure(path) if transactional
 
     response = self.class.send(method, path, options)
 
@@ -339,10 +337,6 @@ class MadMimi
 
   def extract_format(path)
     File.extname(path)[1..-1].try(:to_sym)
-  end
-
-  def convert_to_secure(path)
-    "#{ self.class.base_uri.gsub('http://', 'https://') }#{ path }"
   end
 
   def path(key, arguments={})

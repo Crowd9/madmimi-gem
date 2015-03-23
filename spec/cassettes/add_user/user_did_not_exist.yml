@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://api.madmimi.com/audience_members
+    uri: https://api.madmimi.com/audience_members
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY&csv_file=email%2Cfirstname%2Ccustom_value_1%0Aadd_user%40example.com%2CAddUser%2Cadd_user%0A

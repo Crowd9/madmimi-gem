@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://api.madmimi.com/promotions/save
+    uri: https://api.madmimi.com/promotions/save
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY&promotion_name=Test%20promotion&raw_html=%3Chtml%3E%3Cbody%3ETest%20%5B%5Btracking_beacon%5D%5D%5B%5Bopt_out%5D%5D%3C%2Fbody%3E%3C%2Fhtml%3E&raw_plain_text=Test%20%5B%5Bopt_out%5D%5D

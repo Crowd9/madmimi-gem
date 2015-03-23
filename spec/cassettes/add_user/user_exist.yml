@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.madmimi.com/audience_members.xml
+    uri: https://api.madmimi.com/audience_members.xml
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY
@@ -152,7 +152,7 @@ http_interactions:
   recorded_at: Sun, 07 Sep 2014 16:43:07 GMT
 - request:
     method: get
-    uri: http://api.madmimi.com/audience_members.xml
+    uri: https://api.madmimi.com/audience_members.xml
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY

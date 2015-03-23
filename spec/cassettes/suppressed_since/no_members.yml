@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.madmimi.com/audience_members/suppressed_since/1409512823.txt
+    uri: https://api.madmimi.com/audience_members/suppressed_since/1409512823.txt
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY&show_suppression_reason=false

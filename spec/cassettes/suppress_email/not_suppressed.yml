@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.madmimi.com/audience_members/test@example.com/is_suppressed
+    uri: https://api.madmimi.com/audience_members/test@example.com/is_suppressed
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY
@@ -50,7 +50,7 @@ http_interactions:
   recorded_at: Sun, 07 Sep 2014 19:32:07 GMT
 - request:
     method: post
-    uri: http://api.madmimi.com/suppressed_audience_members
+    uri: https://api.madmimi.com/suppressed_audience_members
     body:
       encoding: US-ASCII
       string: username=test%40example.com&api_key=TEST_API_KEY&audience_member_id=test%40example.com
