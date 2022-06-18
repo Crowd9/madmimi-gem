@@ -10,6 +10,7 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     builder (3.2.2)
+    concurrent-ruby (1.1.10)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     descendants_tracker (0.0.4)
@@ -51,7 +52,8 @@ GEM
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    i18n (0.6.11)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     jeweler (2.0.1)
       builder
       bundler (>= 1.0)
