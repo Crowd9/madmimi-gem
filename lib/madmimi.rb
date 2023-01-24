@@ -28,7 +28,7 @@
 
 require 'active_support/core_ext/string'
 require 'active_support/core_ext/hash'
-require 'uri'
+require 'cgi'
 require 'rubygems'
 require 'httparty'
 require 'csv'
@@ -340,7 +340,7 @@ class MadMimi
   end
 
   def path(key, arguments={})
-    escaped_arguments = arguments.inject({}){ |h, (k, v)| h[k] = URI.escape(v.to_s); h }
+    escaped_arguments = arguments.inject({}){ |h, (k, v)| h[k] = CGI.escape(v.to_s); h }
     paths[key] % escaped_arguments
   end
 
